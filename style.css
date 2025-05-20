@@ -8,11 +8,16 @@ body {
 }
 
 nav {
-    background-color: #007bff;
+    background-color: #333;
     padding: 1em;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Align items to the start */
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+nav .heading {
+    margin-right: 1em; /* Add some spacing */
 }
 
 nav .heading h4 {
@@ -25,6 +30,7 @@ nav .nav-links {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 nav .nav-links li a {
@@ -32,34 +38,54 @@ nav .nav-links li a {
     text-decoration: none;
     padding: 0.5em 1em;
     display: block;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 nav .nav-links li a:hover {
     background-color: #0056b3;
 }
 
-.semester-section {
-    padding: 2em;
-    margin-bottom: 1em;
+.semester-dropdown {
+    position: relative;
+    margin: 1em; /* Reduced margin for tighter layout */
     background-color: white;
+    padding: 1em;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 2em); /* Take full width minus margins */
+    max-width: 600px; /* Maximum width to prevent excessive stretching on large screens */
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
-.semester-section h2 {
-    color: #007bff;
+.semester-dropdown h2 {
+    color: #555;
+    cursor: pointer;
+    margin: 0;
+    padding: 0.5em; /* Reduced padding */
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Only take space of content */
 }
 
-.subject {
-    margin-bottom: 1em;
-    padding: 1em;
+.semester-dropdown h2:hover {
+    background-color: #e0e0e0; /* Hover just on text */
+}
+
+.semester-dropdown .subject {
+    display: none;
+    margin-top: 0.5em; /* Reduced margin */
+    padding: 0.5em; /* Reduced padding */
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+.semester-dropdown:hover .subject {
+    display: block;
 }
 
 .subject h3 {
     color: #555;
     margin-top: 0;
+    margin-bottom: 0.25em; /* Reduced margin */
 }
 
 footer {
@@ -67,4 +93,28 @@ footer {
     padding: 1em;
     background-color: #333;
     color: white;
+    width: 100%; /* Full width */
+    box-sizing: border-box;
+}
+
+/* Media Query for Mobile Compatibility */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: flex-start; /* Left align in column */
+    }
+
+    nav .nav-links {
+        width: 100%; /* Full width on small screens */
+    }
+
+    nav .nav-links li {
+        display: block; /* Full width list items */
+        text-align: left;
+    }
+
+    .semester-dropdown {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+    }
 }
